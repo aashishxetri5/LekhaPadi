@@ -9,6 +9,15 @@ CREATE TABLE Users (
     verificationTimestamp TIMESTAMP DEFAULT NULL
 );
 
+CREATE TABLE UserLogin (
+    loginID INTEGER PRIMARY KEY AUTOINCREMENT,
+    userID INTEGER NOT NULL,
+    salt TEXT NOT NULL,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    FOREIGN KEY (userID) REFERENCES Users(userID)
+);
+
 CREATE TABLE Blogs (
     blogID INTEGER PRIMARY KEY AUTOINCREMENT,
     userID INTEGER NOT NULL,
