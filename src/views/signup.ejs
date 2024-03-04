@@ -6,6 +6,7 @@
     <title>LekhaPadi - Registration</title>
 
     <%- include('all_css_js') -%>
+    <script src="/js/signupFormValidation.js" defer></script>
   </head>
   <body>
     <section class="w-full">
@@ -18,14 +19,14 @@
           >
             Signup Form
           </h2>
-          <form action="#" method="POST" class="p-4 tracking-normal">
+          <form action="signup" method="POST" class="p-4 tracking-normal" id="signupform">
             <div class="mb-3">
               <label for="fullname" class="block mb-1 text-white font-medium"
                 >Fullname</label
               >
               <input
                 type="text"
-                name="fullanme"
+                name="fullname"
                 placeholder="John Doe"
                 class="focus:ring-primary-600 focus:border-primary-600 w-full h-9 px-3 rounded"
                 required
@@ -52,12 +53,14 @@
               >
               <input
                 type="text"
-                name="email"
+                name="username"
                 id="username"
                 class="focus:ring-primary-600 focus:border-primary-600 w-full h-9 px-3 rounded"
                 placeholder="johndoe"
                 required
               />
+
+              <span class="block mb-3 text-sm text-red-700" id="username-error-msg"></span>
             </div>
             <div class="mb-3">
               <label for="password" class="block mb-1 text-white font-medium"
@@ -65,13 +68,13 @@
               >
               <input
                 type="password"
-                name="email"
+                name="password"
                 id="password"
                 class="focus:ring-primary-600 focus:border-primary-600 w-full h-9 px-3 rounded"
                 placeholder="**********"
                 required
               />
-              <span class="error-msg block mb-3"></span>
+              <span class="block mb-3 text-sm text-red-700" id="pwd-error-msg"></span>
             </div>
             <div class="mb-3">
               <label for="cpassword" class="block mb-1 text-white font-medium"
@@ -79,13 +82,13 @@
               >
               <input
                 type="password"
-                name="email"
+                name="cpwd"
                 id="cpassword"
                 class="focus:ring-primary-600 focus:border-primary-600 w-full h-9 px-3 rounded"
                 placeholder="**********"
                 required
               />
-              <span class="confirm-err-msg block"></span>
+              <span class="block mb-3 text-sm text-red-700 block" id="confirm-err-msg"></span>
             </div>
 
             <div class="acceptance">
