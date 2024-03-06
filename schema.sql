@@ -2,9 +2,6 @@ CREATE TABLE Users (
     userID INTEGER PRIMARY KEY AUTOINCREMENT,
     fullname TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    username TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL,
-    salt TEXT NOT NULL,
     isVerified INTEGER DEFAULT 0, -- 0 for false, 1 for true
     verificationTimestamp TIMESTAMP DEFAULT NULL
 );
@@ -16,7 +13,7 @@ CREATE TABLE UserLogin (
     username TEXT NOT NULL,
     password TEXT NOT NULL,
     FOREIGN KEY (userID) REFERENCES Users(userID)
-);
+); 
 
 CREATE TABLE Blogs (
     blogID INTEGER PRIMARY KEY AUTOINCREMENT,
