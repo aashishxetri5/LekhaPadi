@@ -1,0 +1,41 @@
+<div class="carousel px-5">
+  <div class="carousel-images">
+    <img src="./images/pic1.png" alt="Image 1" />
+    <img src="./images/pic3.jpg" alt="Image 2" />
+    <img src="./images/pic4.jpg" alt="Image 3" />
+    <!-- Add more images as needed -->
+
+
+
+    <script>
+      let slideIndex = 0;
+      showSlides(slideIndex);
+
+      function moveSlide(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document
+          .getElementsByClassName("carousel-images")[0]
+          .getElementsByTagName("img");
+        if (n >= slides.length) {
+          slideIndex = 0;
+        }
+        if (n < 0) {
+          slideIndex = slides.length - 1;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideIndex].style.display = "block";
+      }
+
+      
+      setInterval(function () {
+        moveSlide(1);
+      }, 2000);
+    </script>
+  </div>
+</div>

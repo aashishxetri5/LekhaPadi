@@ -4,7 +4,10 @@
 // @route GET /signup
 // @access public
 const registerUser = (req, res) => {
-  res.status(200).json({ salt: passwordSalt });
+  const userData=req.body;
+  console.log(userData)
+  res.status(200).json( {message:"hello"});
+  
 };
 
 module.exports = { registerUser };
