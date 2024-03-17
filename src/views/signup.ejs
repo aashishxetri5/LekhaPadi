@@ -7,88 +7,114 @@
 
     <%- include('all_css_js') -%>
     <script src="/js/signupFormValidation.js" defer></script>
+
+    <style>
+      body {
+        background: linear-gradient(180deg, #5dade2 0%, #ff5733 128.71%);
+        background-repeat: no-repeat;
+      }
+
+      .signup-container {
+        background: url("/images/registrationBG.png");
+        background-repeat: none;
+        background-size: cover;
+        opacity: .8;
+      }
+    </style>
   </head>
   <body>
-    <section class="w-full">
-      <div class="flex justify-center items-center h-screen">
-        <div
-          class="md:w-4/12 sm:w-2/3 signupform bg-gray-800 px-5 py-4 rounded-xl"
-        >
+    <section class="w-full flex justify-center">
+      <div class="w-4/6 items-center h-5/6 signup-container">
+        <div class="md:w-1/2 signupform bg-white px-5 py-4 rounded-xl">
           <h2
-            class="font-bold text-white text-center w-full text-xl tracking-normal"
+            class="font-bold  text-center w-full text-xl tracking-normal"
           >
             Signup Form
           </h2>
-          <form action="signup" method="POST" class="p-4 tracking-normal" id="signupform">
+          <form
+            action="signup"
+            method="POST"
+            class="p-4 tracking-normal height-screen overflow-y-scroll"
+            id="signupform"
+          >
             <div class="mb-3">
-              <label for="fullname" class="block mb-1 text-white font-medium"
-                >Fullname</label
-              >
+              <label for="fullname" class="block mb-1  font-medium">
+                Fullname
+              </label>
               <input
                 type="text"
                 name="fullname"
                 placeholder="John Doe"
-                class="focus:ring-primary-600 focus:border-primary-600 w-full h-9 px-3 rounded"
+                class="bg-gray-200 w-full h-9 px-3 rounded"
                 required
               />
             </div>
 
             <div class="mb-3">
-              <label for="email" class="block mb-1 text-white font-medium"
+              <label for="email" class="block mb-1  font-medium"
                 >Email</label
               >
               <input
                 type="email"
                 name="email"
                 id="email"
-                class="focus:ring-primary-600 focus:border-primary-600 w-full h-9 px-3 rounded"
+                class="bg-gray-200 w-full h-9 px-3 rounded"
                 placeholder="jon@mail.com"
                 required
               />
             </div>
 
             <div class="mb-3">
-              <label for="username" class="block mb-1 text-white font-medium"
+              <label for="username" class="block mb-1  font-medium"
                 >Username</label
               >
               <input
                 type="text"
                 name="username"
                 id="username"
-                class="focus:ring-primary-600 focus:border-primary-600 w-full h-9 px-3 rounded"
+                class="bg-gray-200 w-full h-9 px-3 rounded"
                 placeholder="johndoe"
                 required
               />
 
-              <span class="block mb-3 text-sm text-red-700" id="username-error-msg"></span>
+              <span
+                class="block mb-3 text-sm text-red-700"
+                id="username-error-msg"
+              ></span>
             </div>
             <div class="mb-3">
-              <label for="password" class="block mb-1 text-white font-medium"
+              <label for="password" class="block mb-1 font-medium"
                 >Password</label
               >
               <input
                 type="password"
                 name="password"
                 id="password"
-                class="focus:ring-primary-600 focus:border-primary-600 w-full h-9 px-3 rounded"
+                class="bg-gray-200 w-full h-9 px-3 rounded"
                 placeholder="**********"
                 required
               />
-              <span class="block mb-3 text-sm text-red-700" id="pwd-error-msg"></span>
+              <span
+                class="block mb-3 text-sm text-red-700"
+                id="pwd-error-msg"
+              ></span>
             </div>
             <div class="mb-3">
-              <label for="cpassword" class="block mb-1 text-white font-medium"
+              <label for="cpassword" class="block mb-1  font-medium"
                 >Confirm Password</label
               >
               <input
                 type="password"
                 name="cpwd"
                 id="cpassword"
-                class="focus:ring-primary-600 focus:border-primary-600 w-full h-9 px-3 rounded"
+                class="bg-gray-200 w-full h-9 px-3 rounded"
                 placeholder="**********"
                 required
               />
-              <span class="block mb-3 text-sm text-red-700 block" id="confirm-err-msg"></span>
+              <span
+                class="block mb-3 text-sm text-red-700 block"
+                id="confirm-err-msg"
+              ></span>
             </div>
 
             <div class="acceptance">
@@ -102,7 +128,7 @@
                   />
                 </div>
                 <div class="inline">
-                  <label for="tnc" class="text-white"
+                  <label for="tnc" class=""
                     >I accept the
                     <a class="!text-blue-700 hover:underline" href="#"
                       >Terms and Conditions</a
@@ -126,11 +152,9 @@
             </p>
           </form>
         </div>
-        <div class="backbtn">
-          <p class="text-center">
-            <a href="/" class="text-blue-700 hover:underline">Back To Home</a>
-          </p>
-        </div>
+        <!-- <div class="backbtn">
+          
+        </div> -->
       </div>
     </section>
   </body>
