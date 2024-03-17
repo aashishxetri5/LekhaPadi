@@ -9,8 +9,13 @@
     <style>
       .password-toggle-icon {
         top: 70%;
-
         transform: translateY(-50%);
+      }
+
+      body {
+        background: url(/images/loginBG.png);
+        background-size: cover;
+        background-repeat: no-repeat;
       }
     </style>
 
@@ -18,36 +23,38 @@
   </head>
 
   <body class="flex justify-center items-center min-h-screen bg-gray-50">
-    <div class="w-full max-w-md px-4 py-8 bg-gray-300 rounded-lg shadow-lg">
+    <div class="w-full max-w-md px-12 py-8 bg-white/[.95] rounded-lg shadow-lg">
       <section>
         <h1
           class="text-xl font-bold leading-tight tracking-tight text-center text-gray-900 md:text-2xl"
         >
-          Sign in to your account
+          Sign In
         </h1>
         <br />
-        <form class="space-y-8 md:space-y-6" action="Login" method="post">
+        <form action="login" method="post" class="lato">
           <div>
             <label
               for="username"
-              class="block mb-2 text-sm font-medium text-gray-900"
+              class="block mb-1 text-sm font-semibold text-gray-900"
               >Username</label
             >
             <input
               type="text"
               name="username"
               id="username"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+              class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
               placeholder="johndoe"
-              required=""
+              required
             />
-            <span class="block mb-3 text-sm text-red-700" id="username-error-msg"></span>
-
+            <span
+              class="block mb-1 text-sm text-red-700"
+              id="username-error-msg"
+            ></span>
           </div>
-          <div class="relative">
+          <div class="mt-4">
             <label
               for="password"
-              class="block mb-2 text-sm font-medium text-gray-900"
+              class="block mb-1 text-sm font-bold text-gray-900"
               >Password</label
             >
             <input
@@ -55,10 +62,13 @@
               name="password"
               id="password"
               placeholder="••••••••"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-10"
-              
+              class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 pr-10"
+              required
             />
-            <span class="block mb-3 text-sm text-red-700" id="pwd-error-msg"></span>
+            <span
+              class="block mb-3 text-sm text-red-700"
+              id="pwd-error-msg"
+            ></span>
             <span
               id="togglePassword"
               class="password-toggle-icon absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer text-gray-700 dark:text-gray-300"
@@ -68,7 +78,7 @@
                 fill="none"
                 viewBox="0 0 23 23"
                 stroke-width="2"
-                stroke="currentColor"
+                stroke="#c2c2c2"
                 width="15"
                 height="15"
               >
@@ -85,26 +95,35 @@
               </svg>
             </span>
           </div>
-          <div class="flex items-center">
-            <input
-              id="remember"
-              aria-describedby="remember"
-              type="checkbox"
-              class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-            />
-            <label for="remember" class="text-gray-500 ml-2">Remember me</label>
+          <div class="flex items-center justify-between">
+            <div class="remember flex items-center">
+              <input
+                id="remember"
+                aria-describedby="remember"
+                type="checkbox"
+                class="border border-gray-200 bg-gray-300 focus:ring-3 focus:ring-primary-300"
+              />
+              <label for="remember" class="text-gray-700 ml-2 text-sm">
+                Remember me
+              </label>
+            </div>
+            <div class="forgotpwd">
+              <a href="#" class="text-sm font-light text-gray-700"
+                >Forgot Password?</a
+              >
+            </div>
           </div>
-          <div class="mt-4">
+          <div class="mt-4 flex justify-center">
             <button
               type="submit"
-              class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-300"
+              class="bg-primary w-2/6 text-white bg-blue-600 font-medium rounded-lg text-sm px-4 py-2"
             >
               Login
             </button>
           </div>
-          <p class="text-sm text-center font-light text-gray-500 mt-4">
+          <p class="text-sm font-light text-gray-500 mt-4">
             Don’t have an account yet?
-            <a href="#" class="font-medium text-blue-600 hover:underline"
+            <a href="#" class="font-medium text-blue-600 underline"
               >Sign up</a
             >
           </p>

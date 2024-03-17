@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@100;200;300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
 
 * {
   margin: 0;
@@ -8,4 +9,17 @@
   border: none;
   box-sizing: border-box;
   text-decoration: none;
+}
+
+:root {
+  --orange-primary: #ff5733;
+  --font-lato: "Lato", sans-serif;
+}
+
+.bg-primary {
+  background-color: var(--orange-primary);
+}
+
+.lato {
+  font-family: var(--font-lato);
 }
