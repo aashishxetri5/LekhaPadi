@@ -16,10 +16,15 @@
   --font-lato: "Lato", sans-serif;
 }
 
+body {
+  font-size: 14px;
+}
+
 .bg-primary {
   background-color: var(--orange-primary);
 }
 
 .lato {
   font-family: var(--font-lato);
+
 }

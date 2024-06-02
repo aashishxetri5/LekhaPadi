@@ -1,50 +1,39 @@
-.carousel {
-    position: relative;
-    max-width: 100%;
-    max-height: 400px;
-    aspect-ratio: 3/2;
-    overflow: hidden;
-    object-fit: cover;
+.sl-container {
+  box-shadow: 10px 25px 30px rgba(30, 30, 200, 0.3);
+}
 
+.sl-wrapper {
+  width: 100%;
+  display: flex;
+  animation: slide 10s infinite;
+}
 
+img {
+  min-width: 100%;
+}
+@keyframes slide {
+  0% {
+    transform: translateX(0);
   }
-  
-  .carousel-images img {
-    width: 100%;
-    display: none;
-    aspect-ratio: 3/2; 
-    object-fit: cover;   
+  25% {
+    transform: translateX(0);
   }
-  
-  .carousel-images img.active {
-    display: block;
-    overflow: hidden;
-    aspect-ratio: 3/2; 
-    object-fit: contain;
-
-
+  30% {
+    transform: translateX(-100%);
   }
-
-  .prev{
-    margin-left: 20px;
-
+  50% {
+    transform: translateX(-100%);
   }
-
-  .next{
-    margin-right: 20px;
+  55% {
+    transform: translateX(-200%);
   }
-  
-  .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    font-size: 18px;
+  75% {
+    transform: translateX(-200%);
   }
-  
-  .prev { left: 0; }
-  .next { right: 0; }
-  
+  80% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
