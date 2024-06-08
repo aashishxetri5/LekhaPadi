@@ -1,23 +1,31 @@
 const express = require("express");
-const { registerUser } = require("../controllers/SignupController");
-const {userLogin}= require('../controllers/LoginController');
+const userSignup = require("../controllers/SignupController");
+const userLogin = require("../controllers/LoginController");
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { user: req.session.user });
 });
 
 router.get("/signup", (req, res) => {
-  res.render("signup");
+  if (req.session.user === undefined) res.render("signup");
+  else res.redirect("/");
 });
 
-router.route("/signup").post(registerUser);
+router.post("/signup", async (req, res) => {
+  await userSignup.signup(req, res);
+});
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  if (req.session.user === undefined) res.render("login");
+  else res.redirect("/");
 });
 
-router.route("/login").post(userLogin);
+router.post("/login", async (req, res) => {
+  await userLogin.login(req, res);
+});
+
+router.get("/logout", userLogin.logout);
 
 module.exports = router;

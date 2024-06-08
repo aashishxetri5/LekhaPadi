@@ -6,23 +6,25 @@
     <title>LekhaPadi</title>
     <%- include('all_css_js') -%>
     <link rel="stylesheet" href="/css/landing.css" />
+
+    <script src="/js/index.js" defer></script>
   </head>
   <body>
     <div><%- include('navbar') -%></div>
-    <div class="search"><%- include('search') -%></div>
 
-    <div class="flex">
-      <div
-        class="left border-t-2 border-r-2 border-b-0 border-l-0 border-solid border-black p-4 w-full"
-      >
-        <div><%- include('carosul') -%></div>
-        <br />
-        <h1 class="px-5">Recents Blogs</h1>
+    <div class="flex p-4">
+      <div class="left w-4/6">
+        <div class="w-full"><%- include('carousel') -%></div>
+        <div class="s-title pt-3">
+          <h3
+            class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight"
+          >
+            Recent Blogs
+          </h3>
+        </div>
         <div><%- include('recent') -%></div>
       </div>
-      <div
-        class="right border-t-2 border-r-0 border-b-0 border-l-0 border-solid border-black p-4 w-1/2"
-      >
+      <div class="right w-2/6">
         <div><%- include('popular') -%></div>
       </div>
     </div>
