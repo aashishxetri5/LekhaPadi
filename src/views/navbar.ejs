@@ -67,21 +67,85 @@
     </div>
 
     <div class="right actionBtn flex items-center">
+      <% if(user === undefined) { %>
       <a
-      href="/login"
+        href="/login"
         class="font-medium rounded-2xl text-md px-4 py-2 text-center right-menu"
         title="Login Button"
       >
         Login
       </a>
       <a
-      href="/signup"
+        href="/signup"
         class="text-white font-medium rounded-2xl text-md px-4 py-2 text-center right-menu"
         title="Login Button"
         style="background-color: #5dade2"
       >
         Sign Up
       </a>
+
+      <% } else { %>
+
+      <!-- component -->
+      <!-- This is an example component -->
+      <div class="max-w-lg mx-auto">
+        <button
+          class="font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+          type="button"
+          data-dropdown-toggle="dropdown"
+        >
+          <div
+            class="inline-block h-10 w-10 border-1 border-solid rounded-full border-orange-500"
+          >
+            <img
+              src="/images/loginBG.png"
+              alt=""
+              class="object-cover h-full w-full rounded-full"
+            />
+          </div>
+          <span class="pl-1 text-lg"> @<%=user.username%> </span>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div
+          class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"
+          id="dropdown"
+        >
+          <div class="px-4 py-3">
+            <span class="block text-sm"><%=user.fullname%></span>
+            <span class="block text-sm font-medium text-gray-900 truncate"
+              ><%=user.email%></span
+            >
+          </div>
+          <ul class="py-1" aria-labelledby="dropdown">
+            <li>
+              <a
+                href="#"
+                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                >Account</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                >New Blog</a
+              >
+            </li>
+            <li>
+              <a
+                href="/logout"
+                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                >Sign out</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+
+      <% } %>
       <button class="menu-toggler relative pointer border-none w-7 ml-3">
         <span></span>
         <span></span>
