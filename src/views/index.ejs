@@ -6,6 +6,8 @@
     <title>LekhaPadi</title>
     <%- include('all_css_js') -%>
     <link rel="stylesheet" href="/css/landing.css" />
+
+    <script src="/js/index.js" defer></script>
   </head>
   <body>
     <div><%- include('navbar') -%></div>
@@ -14,7 +16,11 @@
       <div class="left w-4/6">
         <div class="w-full"><%- include('carousel') -%></div>
         <div class="s-title pt-3">
-          <h3 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Recent Blogs</h3>
+          <h3
+            class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight"
+          >
+            Recent Blogs
+          </h3>
         </div>
         <div><%- include('recent') -%></div>
       </div>
