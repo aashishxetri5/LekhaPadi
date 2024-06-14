@@ -12,8 +12,8 @@
   <body>
     <div><%- include('navbar') -%></div>
 
-    <div class="flex my-5 pl-4">
-      <div class="left w-4/6">
+    <div class="flex my-5 px-4">
+      <div class="left lg:w-4/6 w-full">
         <div class="w-full"><%- include('carousel') -%></div>
         <div class="s-title mt-10">
           <h3
@@ -26,7 +26,7 @@
           <%- include('recent') -%>
         </div>
       </div>
-      <div class="right w-2/6">
+      <div class="right w-2/6 hidden md:block">
         <div><%- include('popular') -%></div>
       </div>
     </div>
