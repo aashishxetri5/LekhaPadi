@@ -24,6 +24,10 @@ body {
   background-color: var(--orange-primary);
 }
 
+.border-primary {
+  border-color: var(--orange-primary);
+}
+
 .lato {
   font-family: var(--font-lato);
 
