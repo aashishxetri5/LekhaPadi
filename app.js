@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const fileUpload = require("express-fileupload");
 require("dotenv").config(); // Load environment variables from .env file
 
 const secret = process.env.SESSION_SECRET;
@@ -30,6 +31,9 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Middleware to handle file uploads
+app.use(fileUpload());
 
 const routes = require("./src/routes");
 app.use("/", routes);
