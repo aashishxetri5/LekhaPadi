@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
     console.error(err);
     return res.status(500).send("Internal Server Error");
   } finally {
-    if (dbConnection) {
+    if (mongoose.connection.readyState === 1) {
       console.log("Closing database connection");
       await mongoose.disconnect();
     }

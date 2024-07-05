@@ -27,7 +27,13 @@ exports.signup = async (req, res) => {
         .digest("hex");
 
       // Create a new AdminUser document
-      const newUser = new User({ fullname, email, salt, username, password:hash });
+      const newUser = new User({
+        fullname,
+        email,
+        salt,
+        username,
+        password: hash,
+      });
       await newUser.save();
 
       // Set the session user
@@ -49,7 +55,7 @@ exports.signup = async (req, res) => {
     console.error(err);
     return res.status(500).send("Internal Server Error");
   } finally {
-    if (dbConnection) {
+    if (mongoose.connection.readyState === 1) {
       console.log("Closing database connection");
       await mongoose.disconnect();
     }
