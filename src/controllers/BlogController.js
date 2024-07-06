@@ -44,8 +44,6 @@ exports.newBlog = async (req, res) => {
       status: "published",
     });
 
-    // console.log(coverImage);
-
     await newBlog.save();
 
     return res.redirect("/");
@@ -72,10 +70,10 @@ exports.fetchDisplayBlogs = async (req, res) => {
 
     const blogs = await Blog.find({ status: "published" })
       .sort({ createdAt: -1 })
-      .select("title description coverImage tags createdAt slug author")
+      .select(
+        "title sanitizedDescription coverImage tags createdAt slug author"
+      )
       .lean();
-
-    console.log(blogs);
 
     return blogs;
   } catch (err) {
@@ -102,7 +100,7 @@ exports.fetchBlogBySlug = async (req, res) => {
       status: "published",
     })
       .select(
-        "title description sanitizedHtml author coverImage likes tags created_at"
+        "title sanitizedDescription sanitizedHtml author coverImage likes tags created_at"
       )
       .lean();
 
