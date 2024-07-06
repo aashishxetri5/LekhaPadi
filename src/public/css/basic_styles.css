@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Karla:wght@100;200;300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
 
 * {
   margin: 0;
@@ -13,7 +13,9 @@
 
 :root {
   --orange-primary: #ff5733;
+  --blue-secondary: #5dade2;
   --font-lato: "Lato", sans-serif;
+  --font-merriweather: "Merriweather", serif;
 }
 
 body {
@@ -24,7 +26,28 @@ body {
   background-color: var(--orange-primary);
 }
 
+.bg-secondary {
+  background-color: var(--blue-secondary);
+}
+
 .lato {
   font-family: var(--font-lato);
-
 }
+
+.merriweather {
+  font-family: var(--font-merriweather);
+}
+
+.text-primary {
+  color: var(--orange-primary);
+}
+
+.text-secondary {
+  color: var(--blue-secondary);
+}
+
+.hover-text-primary:hover {
+  transition: 0.3s ease-in-out;
+  color: var(--orange-primary);
+}
+

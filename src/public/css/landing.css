@@ -37,3 +37,28 @@ img {
     transform: translateX(-300%);
   }
 }
+
+.trendingAuthorLists div:nth-child(1) .authImgWrapper {
+  background: rgb(255, 215, 0);
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 1) 45%,
+    rgba(254, 254, 254, 1) 95%
+  );
+}
+.trendingAuthorLists div:nth-child(2) .authImgWrapper {
+  background: rgb(192, 192, 192);
+  background: radial-gradient(
+    circle,
+    rgba(192, 192, 192, 1) 45%,
+    rgba(254, 254, 254, 1) 95%
+  );
+}
+.trendingAuthorLists div:nth-child(3) .authImgWrapper img {
+  background: rgb(205, 127, 50);
+  background: radial-gradient(
+    circle,
+    rgba(205, 127, 50, 1) 45%,
+    rgba(254, 254, 254, 1) 95%
+  );
+}
