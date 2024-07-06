@@ -33,12 +33,14 @@ exports.newBlog = async (req, res) => {
     }
 
     const newBlog = new Blog({
-      title: req.body.title,
-      description: req.body.description,
-      content: req.body.content,
+      title: req.body.title.trim(),
+      description: req.body.description.trim(),
+      content: req.body.content.trim(),
       author: req.session.user.id,
       coverImage: `${imagePath}/${filename}`, // save the uploaded file name
-      tags: req.body.tags ? req.body.tags.split(",") : ["uncategorized"],
+      tags: req.body.tags
+        ? req.body.tags.split(",").map((tag) => tag.trim())
+        : ["uncategorized"],
       status: "published",
     });
 
@@ -70,12 +72,41 @@ exports.fetchDisplayBlogs = async (req, res) => {
 
     const blogs = await Blog.find({ status: "published" })
       .sort({ createdAt: -1 })
-      .select("title description coverImage tags createdAt")
+      .select("title description coverImage tags createdAt slug author")
       .lean();
 
     console.log(blogs);
 
     return blogs;
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send("Internal Server Error");
+  } finally {
+    if (mongoose.connection.readyState === 1) {
+      console.log("Closing database connection");
+      await mongoose.disconnect();
+    }
+  }
+};
+
+exports.fetchBlogBySlug = async (req, res) => {
+  let dbConnection;
+  try {
+    // Connect to the database
+    dbConnection = await mongoose.connect(
+      "mongodb://localhost:27017/lekhapadi"
+    );
+
+    const blog = await Blog.findOne({
+      slug: req.params.slug.trim(),
+      status: "published",
+    })
+      .select(
+        "title description sanitizedHtml author coverImage likes tags created_at"
+      )
+      .lean();
+
+    return blog;
   } catch (err) {
     console.error(err);
     return res.status(500).send("Internal Server Error");

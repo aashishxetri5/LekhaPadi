@@ -1,6 +1,5 @@
 <!-- blog 1 -->
-
-<% if(blogs === undefined) { %>
+<% if(blogs.length === 0) { %>
 
 <div class="noBlogs">
   <h1 class="text-xl font-bold text-gray-400">
@@ -42,13 +41,16 @@
 
     <!-- Blog Details -->
     <h1 class="py-2 text-lg font-bold">
-      <a href="/post/<%=blog._id %>"> <%=blog.title %> </a>
+      <a href="/post/<%=blog.slug %>"> <%=blog.title %> </a>
     </h1>
     <p class="pb-2">
-      <a href="/post/<%=blog._id %>"> <%=blog.description %> </a>
+      <a href="/post/<%=blog.slug %>"> <%=blog.description %> </a>
     </p>
     <div class="readmore">
-      <a href="/post/<%=blog._id %>" class="text-blue-400 flex items-center hover:underline">
+      <a
+        href="/post/<%=blog.slug %>"
+        class="text-blue-400 flex items-center hover:underline"
+      >
         <span class="pr-1"> Read More </span>
         <svg
           width="24"

@@ -41,9 +41,21 @@ router.post("/login", async (req, res) => {
 
 router.get("/logout", userLogin.logout);
 
-router.get("/post/:id", (req, res) => {
-  console.log(req.params.id);
-  res.render("blogPost");
+router.get("/post/:slug", async (req, res) => {
+  try {
+    const blogPromise = blogController.fetchBlogBySlug(req, res);
+    const blog = await blogPromise;
+
+    const userPromise = userController.fetchUserById(blog.author);
+    const user = await userPromise;
+
+    console.log(user);
+
+    res.render("blogPost", { blog, user });
+  } catch (error) {
+    console.error("Error fetching blog:", error);
+    res.sendStatus(500)
+  }
 });
 
 router.get("/draft", authMiddleware, (req, res) => {

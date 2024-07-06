@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogpost</title>
+    <title><%=blog.title%></title>
 
     <%- include('all_css_js') -%>
   </head>
@@ -12,8 +12,9 @@
       <div class="featureImg">
         <div class="relative">
           <img
-            alt="Next.js and Next-Auth V5: Guide to Social Logins(OAuth)"
-            src="/images/image.png"
+            src="<%=blog.coverImage%>"
+            alt="<%=blog.title%>"
+            title="<%=blog.title%>"
             class="mb-0 block w-full"
           />
         </div>
@@ -21,25 +22,21 @@
 
       <div class="postTitle">
         <div
-          class="mt-6 break-words px-4 text-center font-heading text-3xl font-bold text-slate-900 md:mt-10 md:px-5 md:text-4xl lg:px-8 xl:px-20 xl:text-5xl mb-5"
+          class="mt-6 break-words px-4 text-center font-heading text-3xl font-bold text-slate-900 md:mt-10 md:px-5 md:text-4xl lg:px-8 xl:px-20 xl:text-5xl mb-8"
         >
-          <h1 class="leading-tight">
-            Renaming uploaded file with Java Servlet
-          </h1>
+          <h1 class="leading-tight"><%=blog.title%></h1>
         </div>
       </div>
 
       <div class="postDesc">
-        <div
-          class="mb-8 px-4 text-center font-heading md:mb-14 md:px-5 lg:px-8 xl:px-20"
-        >
+        <div class="mb-8 font-heading md:mb-8">
           <h2 class="text-xl leading-snug text-slate-700">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
-            impedit perferendis enim consectetur.
+            <%=blog.description%>
           </h2>
         </div>
       </div>
 
+      <!-- Author and dates  -->
       <div
         class="mt-8 flex flex-row flex-wrap items-center md:text-lg last:md:mb-10"
       >
@@ -52,14 +49,14 @@
               class="overflow-hidden block w-12 h-12 border-solid rounded-full bg-white border-yellow-400"
             >
               <img
-                alt="Aashish Katwal's photo"
-                src="images/defaultUser.png"
+                src="<%=user.profileImage%>"
+                alt="<%=user.fullname%>"
                 class="block w-full rounded-full"
               />
             </a>
           </div>
           <a href="#" class="ml-2 font-semibold text-slate-600 md:ml-0">
-            <span>Aashish Katwal</span>
+            <span><%=user.fullname%></span>
           </a>
         </div>
         <div
@@ -73,7 +70,8 @@
 
           <span href="#" class="tooltip-handle text-slate-600">
             <time datetime="2024-06-12T11:13:07.672Z" class="text-sm">
-              June 12, 2024
+              <%=new Date(blog.created_at).toLocaleDateString('en-US', { day:
+              'numeric', month: 'long', year: 'numeric' }); %>
             </time>
           </span>
         </div>
@@ -81,6 +79,8 @@
 
       <div class="flex flex-col lg:flex-row lg:space-x-12 mb-5">
         <div class="lg:px-0 mt-8 text-gray-700 text-lg leading-relaxed w-full">
+          <%- blog.sanitizedHtml%>
+
           <p class="pb-6">
             Advantage old had otherwise sincerity dependent additions. It in
             adapted natural hastily is justice. Six draw you him full not mean
@@ -174,36 +174,14 @@
       </div>
 
       <div class="mb-5 flex w-full flex-row flex-wrap justify-center">
+        <% blog.tags.forEach(tag => { %>
         <a
           class="mb-3 mr-3 rounded-lg border bg-slate-100 px-2 py-1 text-base font-medium text-slate-700 hover:bg-slate-200"
-          href="/tag/nextjs?source=tags_bottom_blogs"
+          href="#"
         >
-          <span>NodeJS</span>
+          <span><%=tag%></span>
         </a>
-        <a
-          class="mb-3 mr-3 rounded-lg border bg-slate-100 px-2 py-1 text-base font-medium text-slate-700 hover:bg-slate-200"
-          href="/tag/nextauthjs?source=tags_bottom_blogs"
-        >
-          <span>Java</span>
-        </a>
-        <a
-          class="mb-3 mr-3 rounded-lg border bg-slate-100 px-2 py-1 text-base font-medium text-slate-700 hover:bg-slate-200"
-          href="/tag/programming?source=tags_bottom_blogs"
-        >
-          <span>General Programming</span>
-        </a>
-        <a
-          class="mb-3 mr-3 rounded-lg border bg-slate-100 px-2 py-1 text-base font-medium text-slate-700 hover:bg-slate-200"
-          href="/tag/beginners?source=tags_bottom_blogs"
-        >
-          <span>Beginner Developers</span>
-        </a>
-        <a
-          class="mb-3 mr-3 rounded-lg border bg-slate-100 px-2 py-1 text-base font-medium text-slate-700 hover:bg-slate-200"
-          href="/tag/reactjs?source=tags_bottom_blogs"
-        >
-          <span>React</span>
-        </a>
+        <% }) %>
       </div>
 
       <div class="mb-5 mt-10 flex flex-col gap-16">
@@ -223,8 +201,8 @@
                       class="block h-10 w-10 overflow-hidden md:h-14 md:w-14 bg-white border-solid rounded-full border-yellow-400"
                     >
                       <img
-                        alt="Aashish Katwal"
-                        src="images/defaultUser.png"
+                        src="<%=user.profileImage%>"
+                        alt="<%=user.fullname%>"
                         class="block h-full w-full"
                       />
                     </a>
