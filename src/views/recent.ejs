@@ -1,21 +1,56 @@
 <!-- blog 1 -->
+<% if(blogs.length === 0) { %>
+
+<div class="noBlogs">
+  <h1 class="text-xl font-bold text-gray-400">
+    No Blogs yet!!
+    <a href="/draft" class="text-primary underline"> Craft new </a>
+  </h1>
+</div>
+
+<% } else { blogs.forEach(blog => { %>
+
 <div
   class="blog-title bg-gray-50 bg-opacity-75 px-4 py-5 mb-5 rounded-lg flex flex-col-reverse lg:flex-row gap-4 border border-solid shadow transition-all ease-in-out hover:-translate-y-1 cursor-pointer"
 >
   <div class="border border-black rounded-md lg:w-3/5 sm:w-full">
+    <!-- Author -->
+    <div class="authorWrapper flex items-center mb-2">
+      <div class="profileImage w-10 h-10 mr-2 rounded-full">
+        <img
+          src="/images/defaultUser.png"
+          alt="Author Profile Picture"
+          class="w-full h-full object-cover rounded-full"
+        />
+      </div>
+      <div class="authorDetails">
+        <div class="authorName">
+          <a href="#">
+            <span class="font-semibold text-slate-700 cursor-pointer">
+              Aashish Katwal
+            </span>
+          </a>
+        </div>
+        <div class="datedetails">
+          <p class="text-slate-500 font-normal" style="font-size: smaller">
+            03/14/2024
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Details -->
     <h1 class="py-2 text-lg font-bold">
-      <a href="#"> Tech Trends: Innovations Shaping Our Future </a>
+      <a href="/post/<%=blog.slug %>"> <%=blog.title %> </a>
     </h1>
     <p class="pb-2">
-      <a href="#">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab pariatur
-        corporis dicta, rem consequuntur officiis. Explicabo, nemo sunt ut modi
-        laboriosam expedita harum eum! Reiciendis sint facilis nesciunt earum
-        molestias!
-      </a>
+      <a href="/post/<%=blog.slug %>"> <%=blog.description %> </a>
     </p>
     <div class="readmore">
-      <a href="#" class="text-blue-400 flex items-center hover:underline">
+      <a
+        href="/post/<%=blog.slug %>"
+        class="text-blue-400 flex items-center hover:underline"
+      >
         <span class="pr-1"> Read More </span>
         <svg
           width="24"
@@ -41,65 +76,27 @@
         </svg>
       </a>
     </div>
+
+    <div class="tags mt-3">
+      <div class="flex gap-2 flex-wrap items-center">
+        <% blog.tags.forEach(tag => { %>
+        <a
+          href="#"
+          class="rounded-full px-2 py-1 cursor-pointer text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 w-fit"
+        >
+          <%=tag %>
+        </a>
+        <% }); %>
+      </div>
+    </div>
   </div>
   <a class="bg-green-600 w-full lg:w-2/5 rounded-lg bg-opacity-75">
     <img
-      src="/images/image.png"
+      src="<%=blog.coverImage %>"
       alt="image 1"
       class="w-full h-full object-cover rounded-md shadow-lg"
     />
   </a>
 </div>
 
-<!-- blog 2  -->
-<div
-  class="blog-title bg-gray-50 bg-opacity-75 px-4 py-5 mb-5 rounded-lg flex flex-col-reverse lg:flex-row gap-4 border border-solid shadow transition-all ease-in-out hover:-translate-y-1 cursor-pointer"
->
-  <div class="border border-black rounded-md lg:w-3/5 sm:w-full">
-    <h1 class="py-2 text-lg font-bold">
-      <a href="#"> Tech Trends: Innovations Shaping Our Future </a>
-    </h1>
-    <p class="pb-2">
-      <a href="#">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab pariatur
-        corporis dicta, rem consequuntur officiis. Explicabo, nemo sunt ut modi
-        laboriosam expedita harum eum! Reiciendis sint facilis nesciunt earum
-        molestias!
-      </a>
-    </p>
-    <div class="readmore">
-      <a href="#" class="text-blue-400 flex items-center hover:underline">
-        <span class="pr-1"> Read More </span>
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="text-blue-400"
-        >
-          <path
-            d="M12.3103 8.25L16.0312 12L12.3103 15.75M15.5142 12H7.96875"
-            stroke="#60a5fa"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M12 21C16.9687 21 21 16.9688 21 12C21 7.03125 16.9687 3 12 3C7.03125 3 3 7.03125 3 12C3 16.9688 7.03125 21 12 21Z"
-            stroke="#60a5fa"
-            stroke-width="2"
-            stroke-miterlimit="10"
-          />
-        </svg>
-      </a>
-    </div>
-  </div>
-  <a class="bg-green-600 w-full lg:w-2/5 rounded-lg bg-opacity-75">
-    <img
-      src="/images/image.png"
-      alt="image 1"
-      class="w-full h-full object-cover rounded-md shadow-lg"
-    />
-  </a>
-</div>
+<% }); } %>
