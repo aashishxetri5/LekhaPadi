@@ -39,6 +39,7 @@ exports.newBlog = async (req, res) => {
       author: req.session.user.id,
       coverImage: `${imagePath}/${filename}`, // save the uploaded file name
       tags: req.body.tags ? req.body.tags.split(",") : ["uncategorized"],
+      status: "published",
     });
 
     // console.log(coverImage);
@@ -48,6 +49,33 @@ exports.newBlog = async (req, res) => {
     return res.redirect("/");
 
     // Create a new blog post
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send("Internal Server Error");
+  } finally {
+    if (mongoose.connection.readyState === 1) {
+      console.log("Closing database connection");
+      await mongoose.disconnect();
+    }
+  }
+};
+
+exports.fetchDisplayBlogs = async (req, res) => {
+  let dbConnection;
+  try {
+    // Connect to the database
+    dbConnection = await mongoose.connect(
+      "mongodb://localhost:27017/lekhapadi"
+    );
+
+    const blogs = await Blog.find({ status: "published" })
+      .sort({ createdAt: -1 })
+      .select("title description coverImage tags createdAt")
+      .lean();
+
+    console.log(blogs);
+
+    return blogs;
   } catch (err) {
     console.error(err);
     return res.status(500).send("Internal Server Error");
