@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const {marked} = require("marked");
+const { marked } = require("marked");
 const slugify = require("slugify");
 const createDomPurify = require("dompurify");
 const { JSDOM } = require("jsdom");
@@ -63,6 +63,10 @@ const blogSchema = new Schema({
     required: true,
     unique: true,
   },
+  sanitizedDescription: {
+    type: String,
+    required: true,
+  },
   sanitizedHtml: {
     type: String,
     required: true,
@@ -76,6 +80,10 @@ blogSchema.pre("validate", function (next) {
 
   if (this.content) {
     this.sanitizedHtml = dompurify.sanitize(marked(this.content));
+  }
+
+  if (this.description) {
+    this.sanitizedDescription = dompurify.sanitize(marked(this.description));
   }
 
   next();

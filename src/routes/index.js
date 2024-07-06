@@ -22,8 +22,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/signup", authMiddleware, (req, res) => {
-  res.redirect("/");
+router.get("/signup", (req, res) => {
+  if(req.session.user === undefined) res.render("signup");
+  else res.redirect("/");
 });
 
 router.post("/signup", async (req, res) => {

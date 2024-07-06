@@ -1,0 +1,19 @@
+h2 {
+  /* text-2xl text-gray-800 font-semibold mb-4 mt-4 */
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem; /* 32px */
+  color: #1f2937;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+p {
+  padding-bottom: 1.5rem !important;
+}
+
+a {
+  /* text-blue-500 */
+  color: var(--orange-primary);
+}
+

@@ -44,9 +44,9 @@
       <a href="/post/<%=blog.slug %>"> <%=blog.title %> </a>
     </h1>
     <p class="pb-2">
-      <a href="/post/<%=blog.slug %>"> <%=blog.description %> </a>
+      <a href="/post/<%=blog.slug %>"> <%-blog.sanitizedDescription %> </a>
     </p>
-    <div class="readmore">
+    <div class="readmore mt-2">
       <a
         href="/post/<%=blog.slug %>"
         class="text-blue-400 flex items-center hover:underline"
