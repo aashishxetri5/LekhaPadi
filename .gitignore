@@ -131,6 +131,7 @@ dist
 
 #Tailwind css
 src/public/css/output_tailwind.css
+src/public/images/blogImages/*
 
 # Database
 *.db

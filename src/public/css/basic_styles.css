@@ -26,6 +26,10 @@ body {
   background-color: var(--orange-primary);
 }
 
+.border-primary {
+  border-color: var(--orange-primary);
+}
+
 .bg-secondary {
   background-color: var(--blue-secondary);
 }

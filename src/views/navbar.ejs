@@ -53,14 +53,34 @@
     <div class="center search-menu w-1/2">
       <ul class="font-medium border border-gray-100 search-menu w-full">
         <li class="navitem px-3">
-          <form action="/search" method="GET">
+          <form
+            action="/search"
+            method="GET"
+            class="flex justify-center bg-white overflow-hidden border border-solid border-gray-500 rounded-full"
+          >
             <input
               type="search"
-              name="search"
-              id=""
-              placeholder="Enter keyword, category or title"
-              class="border border-solid border-gray-500 p-3 rounded-full my-2 w-full"
+              placeholder="Search..."
+              name="query"
+              class="block flex-grow p-2 p-3 w-full"
             />
+            <button type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 my-auto m-2"
+                style="color: gray"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
           </form>
         </li>
       </ul>
@@ -120,16 +140,16 @@
           <ul class="py-1" aria-labelledby="dropdown">
             <li>
               <a
-                href="#"
-                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                >Account</a
+                href="/draft"
+                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2 font-semibold"
+                >New Blog</a
               >
             </li>
             <li>
               <a
                 href="#"
                 class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                >New Blog</a
+                >Account</a
               >
             </li>
             <li>
