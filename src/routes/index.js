@@ -5,6 +5,7 @@ const blogController = require("../controllers/BlogController");
 const userController = require("../controllers/UserController");
 
 const authMiddleware = require("../middlewares/authMiddleware");
+const noCache = require("../middlewares/noCache");
 
 const router = express.Router();
 
@@ -15,6 +16,8 @@ router.get("/", async (req, res) => {
     const blogsPromise = blogController.fetchDisplayBlogs();
     const blogs = await blogsPromise;
 
+    // console.log(authorDetails);
+
     res.render("index", { user, blogs });
   } catch (error) {
     console.error("Error fetching blogs:", error);
@@ -23,7 +26,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-  if(req.session.user === undefined) res.render("signup");
+  if (req.session.user === undefined) res.render("signup");
   else res.redirect("/");
 });
 
@@ -50,16 +53,14 @@ router.get("/post/:slug", async (req, res) => {
     const userPromise = userController.fetchUserById(blog.author);
     const user = await userPromise;
 
-    console.log(user);
-
     res.render("blogPost", { blog, user });
   } catch (error) {
     console.error("Error fetching blog:", error);
-    res.sendStatus(500)
+    res.sendStatus(500);
   }
 });
 
-router.get("/draft", authMiddleware, (req, res) => {
+router.get("/draft", noCache, authMiddleware, (req, res) => {
   res.render("draft");
 });
 

@@ -61,3 +61,14 @@ exports.signup = async (req, res) => {
     }
   }
 };
+
+function sendOtpViaEmail(to, subject, text) {
+
+  const otp = generateOTP();
+  const otpExpires = Date.now() + 60000; // OTP expires in 1 minute
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    
+  });
+}

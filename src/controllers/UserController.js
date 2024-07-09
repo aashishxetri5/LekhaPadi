@@ -10,7 +10,7 @@ exports.fetchUserById = async (authorId) => {
       "mongodb://localhost:27017/lekhapadi"
     );
 
-    const user = await Blog.findById(authorId)
+    const user = await Blog.findOne({_id: authorId})
       .select("fullname username profileImage")
       .lean();
 

@@ -18,22 +18,28 @@
     <div class="authorWrapper flex items-center mb-2">
       <div class="profileImage w-10 h-10 mr-2 rounded-full">
         <img
-          src="/images/defaultUser.png"
+          src="<%=blog.authorDetails.profileImage %>"
           alt="Author Profile Picture"
           class="w-full h-full object-cover rounded-full"
+          id="authorProfile"
         />
       </div>
       <div class="authorDetails">
         <div class="authorName">
-          <a href="#">
-            <span class="font-semibold text-slate-700 cursor-pointer">
-              Aashish Katwal
+          <a href="author/@<%=blog.authorDetails.username%>" id="authorProfileLink">
+            <span
+              class="font-semibold text-slate-700 cursor-pointer"
+              id="authorName"
+            >
+            <%=blog.authorDetails.fullname %>
             </span>
           </a>
         </div>
         <div class="datedetails">
           <p class="text-slate-500 font-normal" style="font-size: smaller">
-            03/14/2024
+            <%=new Date(blog.created_at).toLocaleDateString('en-US', { day:
+            'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute:
+            'numeric' }); %>
           </p>
         </div>
       </div>

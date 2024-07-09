@@ -68,14 +68,35 @@ exports.fetchDisplayBlogs = async (req, res) => {
       "mongodb://localhost:27017/lekhapadi"
     );
 
-    const blogs = await Blog.find({ status: "published" })
-      .sort({ createdAt: -1 })
-      .select(
-        "title sanitizedDescription coverImage tags createdAt slug author"
-      )
-      .lean();
+    const blogs = await Blog.aggregate([
+      { $match: { status: "published" } },
+      { $sort: { createdAt: -1 } },
+      {
+        $lookup: {
+          from: 'users', // The name of the authors collection in MongoDB
+          localField: 'author',
+          foreignField: '_id',
+          as: 'authorDetails',
+        },
+      },
+      { $unwind: '$authorDetails' }, // Deconstruct the array to include author details directly
+      {
+        $project: {
+          title: 1,
+          sanitizedDescription: 1,
+          coverImage: 1,
+          tags: 1,
+          created_at: 1,
+          slug: 1,
+          'authorDetails.fullname': 1,
+          'authorDetails.username': 1,
+          'authorDetails.profileImage': 1
+        }
+      }
+    ]);
 
     return blogs;
+
   } catch (err) {
     console.error(err);
     return res.status(500).send("Internal Server Error");
