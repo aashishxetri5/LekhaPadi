@@ -26,7 +26,6 @@ exports.signup = async (req, res) => {
         .update(password + salt)
         .digest("hex");
 
-      // Create a new AdminUser document
       const newUser = new User({
         fullname,
         email,
@@ -35,12 +34,6 @@ exports.signup = async (req, res) => {
         password: hash,
       });
       await newUser.save();
-
-      // Set the session user
-
-      // req.session.user = {
-      //   username: user.username,
-      // };
 
       //Generate a random OTP and then send it to the user's email
       const otp = Math.floor(100000 + Math.random() * 900000);

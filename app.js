@@ -23,7 +23,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost:27017/yellowstonerealty",
+      mongoUrl: "mongodb://localhost:27017/lekhapadi",
     }),
     cookie: { maxAge: 180 * 60 * 1000 }, // 3 hours
   })

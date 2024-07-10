@@ -10,7 +10,7 @@ const noCache = require("../middlewares/noCache");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", noCache, async (req, res) => {
   try {
     const user = req.session.user;
 
@@ -71,12 +71,13 @@ router.post("/draft", authMiddleware, async (req, res) => {
 
 router.get("/search", async (req, res) => {
   try {
-    searchPromise = searchController.fetchDisplayBlogs(req, res);
+    searchPromise = searchController.searchBlogForKeyword(req, res);
     searchResults = await searchPromise;
 
     res.render("searchResults", {
+      keyword: req.query.keyword,
       title: `Search Results for "${req.query.keyword}"`,
-      results: searchResults,
+      blogs: searchResults,
     });
   } catch (error) {
     console.error("Error fetching search results:", error);

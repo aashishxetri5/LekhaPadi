@@ -14,7 +14,6 @@ exports.fetchUserById = async (authorId) => {
       .select("fullname username profileImage")
       .lean();
 
-      console.log()
 
     return user;
   } catch (err) {
