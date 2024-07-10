@@ -3,6 +3,7 @@ const userSignup = require("../controllers/SignupController");
 const userLogin = require("../controllers/LoginController");
 const blogController = require("../controllers/BlogController");
 const userController = require("../controllers/UserController");
+const searchController = require("../controllers/SearchController");
 
 const authMiddleware = require("../middlewares/authMiddleware");
 const noCache = require("../middlewares/noCache");
@@ -66,6 +67,21 @@ router.get("/draft", noCache, authMiddleware, (req, res) => {
 
 router.post("/draft", authMiddleware, async (req, res) => {
   await blogController.newBlog(req, res);
+});
+
+router.get("/search", async (req, res) => {
+  try {
+    searchPromise = searchController.fetchDisplayBlogs(req, res);
+    searchResults = await searchPromise;
+
+    res.render("searchResults", {
+      title: `Search Results for "${req.query.keyword}"`,
+      results: searchResults,
+    });
+  } catch (error) {
+    console.error("Error fetching search results:", error);
+    res.sendStatus(500);
+  }
 });
 
 module.exports = router;

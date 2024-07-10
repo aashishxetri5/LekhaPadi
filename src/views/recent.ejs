@@ -1,7 +1,7 @@
-<!-- blog 1 -->
+<!-- blog  -->
 <% if(blogs.length === 0) { %>
 
-<div class="noBlogs">
+<div class="noBlogs" data-aos="zoom-in-down" data-aos-delay="500">
   <h1 class="text-xl font-bold text-gray-400">
     No Blogs yet!!
     <a href="/draft" class="text-primary underline"> Craft new </a>
@@ -11,9 +11,12 @@
 <% } else { blogs.forEach(blog => { %>
 
 <div
-  class="blog-title bg-gray-50 bg-opacity-75 px-4 py-5 mb-5 rounded-lg flex flex-col-reverse lg:flex-row gap-4 border border-solid shadow transition-all ease-in-out hover:-translate-y-1 cursor-pointer"
+  class="blog-title border border-solid border-slate-200 hover:border-slate-300 bg-white shadow-lg bg-opacity-75 px-4 py-5 mb-5 rounded-lg flex flex-col-reverse lg:flex-row gap-4 shadow transition-all ease-in-out hover:-translate-y-1 cursor-pointer"
+  data-aos="zoom-in-down"
+  data-aos-delay="500"
+  data-aos-duration="1000"
 >
-  <div class="border border-black rounded-md lg:w-3/5 sm:w-full">
+  <div class="rounded-md lg:w-3/5 sm:w-full">
     <!-- Author -->
     <div class="authorWrapper flex items-center mb-2">
       <div class="profileImage w-10 h-10 mr-2 rounded-full">
@@ -26,12 +29,15 @@
       </div>
       <div class="authorDetails">
         <div class="authorName">
-          <a href="author/@<%=blog.authorDetails.username%>" id="authorProfileLink">
+          <a
+            href="author/@<%=blog.authorDetails.username%>"
+            id="authorProfileLink"
+          >
             <span
               class="font-semibold text-slate-700 cursor-pointer"
               id="authorName"
             >
-            <%=blog.authorDetails.fullname %>
+              <%=blog.authorDetails.fullname %>
             </span>
           </a>
         </div>
@@ -100,7 +106,7 @@
     <img
       src="<%=blog.coverImage %>"
       alt="image 1"
-      class="w-full h-full object-cover rounded-md shadow-lg"
+      class="w-full h-full object-cover aspect-video rounded-md shadow-lg"
     />
   </a>
 </div>
